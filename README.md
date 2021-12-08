@@ -1,4 +1,4 @@
-# sess-plus
+# sess-plus -- its easier
 
 ## Project setup
 ```
