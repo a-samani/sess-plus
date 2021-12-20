@@ -47,17 +47,17 @@
 
 
     <div v-if="addReq" class="myDiv" style="direction: rtl">
-      <add-request @add-request="addRequest"></add-request>
+      <add-request @add-request="addRequest" :student="student"></add-request>
     </div>
-
+ 
 
     <div v-if="isPrivate" class="myDiv" style="direction: rtl"></div>
   </div>
 </template>
 
 <script>
-import requests from "./Requests.vue";
-import addRequest from "./AddRequest.vue";
+import requests from "./Request/Requests.vue";
+import addRequest from "./Request/AddRequest.vue";
 export default {
   data() {
     return {
@@ -102,7 +102,10 @@ export default {
 };
 </script>
 
-<style>
+
+
+
+<style >
 #reqli1 {
   position: absolute;
   right: 20px;
