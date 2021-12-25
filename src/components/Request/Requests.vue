@@ -9,19 +9,21 @@
     <li class="reqli" id="reqli5"><button @click="upVote">درخواست دادن</button></li>
     <li class="reqli" id="reqli6"><button @click="downVote">برداشتن درخواست</button></li>
   </ul>
+ 
 </template>
 
 <script>
 export default {
   props: ["request"],
   emits: ["upvote", "downvote"],
-
+ 
   data() {
     return {
       radif: Number(1),
     };
   },
   methods: {
+    
     upVote() {
       this.$emit("upvote", this.request.key);
     },

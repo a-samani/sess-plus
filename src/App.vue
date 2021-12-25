@@ -8,7 +8,7 @@
     v-if="homeValid"
     @logOut="LogOut"
     :student="student"
-    :requests="requests"
+    :requests="generalRequests"
     @upvote="upVote"
     @downvote="downVote"
     @addReq="makeReq"
@@ -42,7 +42,7 @@ export default {
           reqs: [],
         },
       ],
-      requests: [
+      generalRequests: [
         // {
         //   key: 0,
         //   type: "اضافه ظرفیت",
@@ -60,40 +60,46 @@ export default {
         //   applicant: [],
         // },
       ],
+      privateRequests: [],
     };
   },
+  computed: {},
   provide() {
-    return { std: this.student, voorood: this.vorood, request: this.requests };
+    return {
+      student: this.student,
+      voorood: this.vorood,
+      request: this.generalRequests,
+      privateReqs: this.privateRequests,
+      generalReqs: this.generalRequests,
+    };
   },
   methods: {
     upVote(id, user) {
-      const req = this.requests.find((req) => req.key == id);
+      const req = this.generalRequests.find((req) => req.key == id);
       if (!req.applicant.includes(user)) {
         req.applicant.push(user);
-      }
-      else{
-        alert('درخواست شما قبلا ثبت شده !')
+      } else {
+        alert("درخواست شما قبلا ثبت شده !");
       }
     },
     downVote(id, user) {
-      const req = this.requests.find((req) => req.key == id);
+      const req = this.generalRequests.find((req) => req.key == id);
       if (req.applicant.includes(user)) {
         req.applicant.pop(user);
-      }
-      else{
-        alert('درخواستی از سمت شما وجود ندارد !')
+      } else {
+        alert("درخواستی از سمت شما وجود ندارد !");
       }
     },
-    makeReq(type,name,user){
+    makeReq(type, name, user) {
       const newReq = {
-        key: this.requests.length,
-          type: type,
-          date: new Date().toLocaleDateString("fa-IR"),
-          courseName:name,
-          valid: true,
-          applicant: [user],
-      }
-      this.requests.push(newReq)
+        key: this.generalRequests.length,
+        type: type,
+        date: new Date().toLocaleDateString("fa-IR"),
+        courseName: name,
+        valid: true,
+        applicant: [user],
+      };
+      this.generalRequests.push(newReq);
     },
 
     toggleLoginValid() {
@@ -110,6 +116,8 @@ export default {
     },
 
     vorood(user, pass) {
+      
+
       const stdn = this.students.find(
         (std) => std.user == user && std.pass == pass
       );
