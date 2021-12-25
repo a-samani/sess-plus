@@ -53,12 +53,16 @@
 
     <div v-if="isPrivate" class="myDiv" style="direction: rtl"></div>
   </div>
+  
+   
 </template>
 
 <script>
 import requests from "./Request/Requests.vue";
 import addRequest from "./Request/AddRequest.vue";
 export default {
+   inject:['studentt'],
+  
   data() {
     return {
       showReq: true,
@@ -70,6 +74,7 @@ export default {
   props: ["student", "requests"],
   emits: ["upvote", "downvote", "addReq"],
   methods: {
+    testt(){console.log(this.studentt)},
     upVote(id) {
       this.$emit("upvote", id, this.student.user);
     },
@@ -158,13 +163,13 @@ body {
 }
 
 .myDiv {
-  width: 1300px;
-  left: 50px;
+  width:80%;
+  left:3%;
   position: absolute;
   box-sizing: border-box;
   z-index: 3;
   height: 484px;
-  top: 100px;
+  top: 10%;
   background-color: rgb(222, 222, 222);
   border-radius: 0px;
 }

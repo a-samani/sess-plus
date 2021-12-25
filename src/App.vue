@@ -116,6 +116,8 @@ export default {
     },
 
     vorood(user, pass) {
+      
+
       const stdn = this.students.find(
         (std) => std.user == user && std.pass == pass
       );

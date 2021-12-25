@@ -15,7 +15,7 @@
       <option value="grayesh">{{ grayesh }}</option>
     </select>
 
-    <div>
+    <div style="overflow: auto;height:400px;direction: rtl">
       <component :is="componentId" v-bind="componentProps"></component>
     </div>
     <br /><br />
@@ -114,6 +114,7 @@ export default {
       return {
         student: this.student,
         type: this.type,
+        studentReqs : this.student.reqs
       };
     },
   },

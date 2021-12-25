@@ -16,7 +16,7 @@
           <h3>ورود به سیستم</h3>
 
           <div class="form-group">
-            <label style="direction: rtl; float: right;margin-bottom: 10px">شماره دانشجویی :</label>
+            <label style="direction: rtl; float: right;margin-bottom: 10px">شناسه کاربری  :</label>
             <input
               type="num"
               class="form-control form-control-lg"
